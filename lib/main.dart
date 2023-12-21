@@ -1,6 +1,12 @@
+import 'package:bambino/Setting/lang/translationSetting.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+import 'View/Pages/Luncher_Page.dart';
+
+main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -10,27 +16,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(),
-      ),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const LuncherPage(),
+      getPages: [],
+      translations: Translation(),
+      locale: const Locale('fr'),
+      fallbackLocale: const Locale('fr'),
+      //theme: ,
     );
   }
 }
