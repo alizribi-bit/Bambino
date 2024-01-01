@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../../Setting/Colors/colorsSetting.dart';
 import 'NewPassword_Screen.dart';
@@ -31,7 +31,9 @@ class _CodeVerificationPasswordState extends State<CodeVerificationPassword> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+          icon: const Icon(
+            Ionicons.arrow_back_outline,
+          ),
         ),
       ),
       body: Form(

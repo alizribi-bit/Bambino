@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:bambino/Setting/Colors/colorsSetting.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Controller/States/User_Controller.dart';
@@ -47,7 +47,9 @@ class _SignInProfileState extends State<SignInProfile> {
             onPressed: () {
               Get.back();
             },
-            icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+            icon: const Icon(
+              Ionicons.arrow_back_outline,
+            ),
           ),
           title: Text("FillProfile".tr),
         ),
@@ -71,8 +73,8 @@ class _SignInProfileState extends State<SignInProfile> {
                                     _image!,
                                   ),
                                 )
-                              : FaIcon(
-                                  FontAwesomeIcons.circleUser,
+                              : Icon(
+                                  Ionicons.person_circle_outline,
                                   color: Colors.grey.shade400,
                                   size: Get.width * .5,
                                 ),
@@ -85,8 +87,8 @@ class _SignInProfileState extends State<SignInProfile> {
                                   _openImagePicker();
                                 });
                               },
-                              child: FaIcon(
-                                FontAwesomeIcons.penSquare,
+                              child: Icon(
+                                Ionicons.pencil_outline,
                                 color: ConstantColor().blue,
                                 size: Get.width * .09,
                               ),
@@ -103,7 +105,7 @@ class _SignInProfileState extends State<SignInProfile> {
                         userController.userNameController,
                         TextInputType.text,
                         "NomPrenom".tr,
-                        FontAwesomeIcons.user,
+                        Ionicons.person_circle_outline,
                         userController.emailU,
                         userController),
                     const SizedBox(
@@ -114,7 +116,7 @@ class _SignInProfileState extends State<SignInProfile> {
                         userController.emailController,
                         TextInputType.emailAddress,
                         "email".tr,
-                        FontAwesomeIcons.envelope,
+                        Ionicons.mail_outline,
                         userController.emailU,
                         userController),
                     const SizedBox(
@@ -147,7 +149,10 @@ class _SignInProfileState extends State<SignInProfile> {
                       textInputAction: TextInputAction.none,
                       controller: userController.dateBirthController,
                       decoration: DecorationWidget(
-                          context, "DateNaiss".tr, FontAwesomeIcons.calendar),
+                        context,
+                        "DateNaiss".tr,
+                        Ionicons.calendar,
+                      ),
                       /*  const InputDecoration(
                         icon: FaIcon(FontAwesomeIcons.calendar),
                         label: Text("DateNaiss"),
@@ -237,8 +242,8 @@ class _SignInProfileState extends State<SignInProfile> {
             child: CircleAvatar(
               radius: Get.width * 0.2,
               backgroundColor: ConstantColor().blue,
-              child: FaIcon(
-                FontAwesomeIcons.circleCheck,
+              child: Icon(
+                Ionicons.shield_checkmark_outline,
                 size: Get.width * 0.25,
                 color: Colors.white,
               ),

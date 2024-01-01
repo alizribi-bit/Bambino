@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../../Controller/States/User_Controller.dart';
 import '../../../Setting/Colors/colorsSetting.dart';
@@ -25,7 +25,7 @@ class _NewPasswordState extends State<NewPassword> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+          icon: Icon(Ionicons.arrow_back_outline),
         ),
       ),
       body: Center(
@@ -60,7 +60,7 @@ class _NewPasswordState extends State<NewPassword> {
                   PasswordController,
                   TextInputType.visiblePassword,
                   "password".tr,
-                  FontAwesomeIcons.lock,
+                  Ionicons.lock_closed_outline,
                   userController.password,
                   userController),
               SizedBox(
@@ -71,7 +71,7 @@ class _NewPasswordState extends State<NewPassword> {
                   userController.passwordController,
                   TextInputType.visiblePassword,
                   "ConfirmPas".tr,
-                  FontAwesomeIcons.lock,
+                  Ionicons.lock_closed_outline,
                   userController.password,
                   userController),
               SizedBox(

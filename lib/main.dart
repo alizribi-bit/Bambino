@@ -22,11 +22,9 @@ Future<void> main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:
-          HomePage() /* login == null
+      home: login == null
           ? const SeplashScreenLogin()
-          : const SeplashScreenHome() */
-      ,
+          : const SeplashScreenHome(),
       getPages: [
         GetPage(name: '/', page: () => const SeplashScreenLogin()),
         GetPage(name: '/luncher', page: () => const LuncherPage()),

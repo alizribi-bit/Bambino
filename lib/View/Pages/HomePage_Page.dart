@@ -1,10 +1,11 @@
+import 'package:bambino/Setting/Colors/colorsSetting.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Appointment_Screen.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Home_Screen.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Location_Screen.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Profile_Screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ionicons/ionicons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,15 +35,40 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         body: _myList[selectedItem],
-        bottomNavigationBar: ConvexAppBar(
-          items: [
-            _tabItem(FaIcon(FontAwesomeIcons.home)),
-            _tabItem(FaIcon(FontAwesomeIcons.locationPin)),
-            _tabItem(FaIcon(FontAwesomeIcons.calendar)),
-            _tabItem(FaIcon(FontAwesomeIcons.person))
-          ],
-          initialActiveIndex: 0,
-          onTap: updateIndex,
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ConvexAppBar(
+            items: [
+              _tabItem(
+                Icon(
+                  Ionicons.home,
+                  color: ConstantColor().grey4,
+                ),
+              ),
+              _tabItem(
+                Icon(
+                  Ionicons.location_sharp,
+                  color: ConstantColor().grey4,
+                ),
+              ),
+              _tabItem(
+                Icon(
+                  Ionicons.calendar,
+                  color: ConstantColor().grey4,
+                ),
+              ),
+              _tabItem(
+                Icon(
+                  Ionicons.person,
+                  color: ConstantColor().grey4,
+                ),
+              )
+            ],
+            initialActiveIndex: 0,
+            onTap: updateIndex,
+            elevation: 0,
+            backgroundColor: Colors.white,
+          ),
         ),
       ),
     );

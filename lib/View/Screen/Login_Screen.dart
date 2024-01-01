@@ -1,8 +1,8 @@
 import 'package:bambino/Setting/Colors/colorsSetting.dart';
 import 'package:bambino/View/Screen/ForgetPassword/Forget_Email_Screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../Controller/States/User_Controller.dart';
 import '../Widget/InputFilde_Widget.dart';
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       userController.emailController,
                       TextInputType.emailAddress,
                       "email".tr,
-                      FontAwesomeIcons.envelope,
+                      Ionicons.mail_outline,
                       userController.emailU,
                       userController),
                   const SizedBox(
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       userController.passwordController,
                       TextInputType.visiblePassword,
                       "password".tr,
-                      FontAwesomeIcons.lock,
+                      Ionicons.lock_closed_outline,
                       userController.password,
                       userController),
                   const SizedBox(

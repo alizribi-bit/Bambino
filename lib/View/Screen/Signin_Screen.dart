@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../Controller/States/User_Controller.dart';
 import '../../Setting/Colors/colorsSetting.dart';
@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         userController.userNameController,
                         TextInputType.text,
                         "NomPrenom".tr,
-                        FontAwesomeIcons.user,
+                        Ionicons.person_circle_outline,
                         userController.emailU,
                         userController),
                     const SizedBox(
@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         userController.emailController,
                         TextInputType.emailAddress,
                         "email".tr,
-                        FontAwesomeIcons.envelope,
+                        Ionicons.mail_open_outline,
                         userController.emailU,
                         userController),
                     const SizedBox(
@@ -76,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         userController.passwordController,
                         TextInputType.visiblePassword,
                         "password".tr,
-                        FontAwesomeIcons.lock,
+                        Ionicons.lock_closed_outline,
                         userController.password,
                         userController),
                     const SizedBox(

@@ -1,6 +1,5 @@
 import 'package:bambino/Setting/Colors/colorsSetting.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 TextFormField textFormFieldWidget(
     context, controller, type, labele, icon, controllerValue, userController) {
@@ -25,7 +24,7 @@ InputDecoration DecorationWidget(BuildContext context, String text, icon) {
     filled: true,
     prefixIcon: Padding(
       padding: const EdgeInsets.fromLTRB(15, 13, 3, 13),
-      child: FaIcon(
+      child: Icon(
         icon,
         size: 20,
         color: ConstantColor().grey4,
