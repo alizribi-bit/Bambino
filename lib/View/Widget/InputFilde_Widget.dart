@@ -40,7 +40,11 @@ InputDecoration DecorationWidget(BuildContext context, String text, icon) {
     ),
     contentPadding: EdgeInsets.zero,
     border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(width: 2, color: Colors.pink)),
+      borderRadius: BorderRadius.circular(14),
+      borderSide: const BorderSide(
+        width: 2,
+        color: Colors.pink,
+      ),
+    ),
   );
 }

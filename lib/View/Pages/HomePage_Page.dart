@@ -1,9 +1,10 @@
-import 'package:country_flags/country_flags.dart';
+import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Appointment_Screen.dart';
+import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Home_Screen.dart';
+import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Location_Screen.dart';
+import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Profile_Screen.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Controller/States/AppLang_Controller.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,23 +14,51 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool langueFR = true;
-  String? email = "";
-
-  void getData() async {
-    final prefs = await SharedPreferences.getInstance();
-    langueFR = prefs.getBool("langueFR") ?? true;
+  //UserController userController = UserController();
+  int selectedItem = 0;
+  void updateIndex(index) {
+    setState(() {
+      selectedItem = index;
+    });
   }
+
+  List<Widget> _myList = [
+    HomeScreen(),
+    LocationScreen(),
+    AppointmentScreen(),
+    ProfileScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            children: [
-              //Comment changer les langeue *** tres tres importante
+        body: _myList[selectedItem],
+        bottomNavigationBar: ConvexAppBar(
+          items: [
+            _tabItem(FaIcon(FontAwesomeIcons.home)),
+            _tabItem(FaIcon(FontAwesomeIcons.locationPin)),
+            _tabItem(FaIcon(FontAwesomeIcons.calendar)),
+            _tabItem(FaIcon(FontAwesomeIcons.person))
+          ],
+          initialActiveIndex: 0,
+          onTap: updateIndex,
+        ),
+      ),
+    );
+  }
+
+  TabItem _tabItem(icon) {
+    return TabItem(icon: icon);
+  }
+}
+
+/* bool langueFR = true;
+  void getData() async {
+    final prefs = await SharedPreferences.getInstance();
+    langueFR = prefs.getBool("langueFR") ?? true;
+  } */
+/* //Comment changer les langeue *** tres tres importante
               GetBuilder<AppLang>(
                 init: AppLang(),
                 builder: (controller) {
@@ -71,35 +100,19 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                     value: controller.appLocalLang,
-                    onChanged: (value) {
-                      controller.changeLanguage(value!);
-                      Get.updateLocale(Locale(value));
+                    onChanged: (x) {
+                      controller.changeLanguage(x!);
+                      Get.updateLocale(Locale(x));
                     },
                   );
                 },
-              ),
-              //test langue
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "bonjour".tr,
-                      style: const TextStyle(fontSize: 19),
-                    ),
-                    Text(
-                      "bonj".tr,
-                      style: const TextStyle(fontSize: 19),
-                    ),
-                    Text(
-                      "conxGoogle".tr,
-                      style: const TextStyle(fontSize: 19),
-                    ),
-                  ],
-                ),
-              ),
-              FutureBuilder<String>(
+              ), */
+/*   Future<String> _getUsername() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('email') ?? 'Unknown User';
+  }
+}
+FutureBuilder<String>(
                 future: _getUsername(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -110,16 +123,4 @@ class _HomePageState extends State<HomePage> {
                     return Text('Welcome, ${snapshot.data}');
                   }
                 },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Future<String> _getUsername() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('emailU') ?? 'Unknown User';
-  }
-}
+              ), */

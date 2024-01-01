@@ -1,3 +1,4 @@
+import 'package:bambino/Model/user_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,20 +8,25 @@ class UserController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController dateBirthController = TextEditingController();
+  TextEditingController photoController = TextEditingController();
 //**********
   var isLoggedIn = false.obs;
   var showError = false.obs;
   var emailU = "";
+  var name = "";
   var password = "";
   String errorMsg = "";
+  User user = new User();
 
   @override
   void onInit() async {
     super.onInit();
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.containsKey('emailU')) {
-      if (prefs.getString('emailU') == emailU &&
-          prefs.getString('password') == password) {
+    if (prefs.containsKey('email')) {
+      if (prefs.getString('email') == user.email &&
+          prefs.getString('password') == user.password) {
         isLoggedIn(true);
       } else {
         isLoggedIn(false);
@@ -31,7 +37,7 @@ class UserController extends GetxController {
   Future<String?> getemeil() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return await prefs.getString('emailU');
+    return await prefs.getString('email');
   }
 
   //Do login method to submit data
@@ -40,8 +46,12 @@ class UserController extends GetxController {
       /* if (validEmail(emailController.text) == null &&
           validEmail(passwordController.text) == null) { */
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString('emailU', emailController.text.trim().toString());
+      prefs.setString('email', emailController.text.trim().toString());
       prefs.setString('password', passwordController.text.trim().toString());
+      prefs.setString('name', userNameController.text.trim().toString());
+      prefs.setString('photo', photoController.text.trim().toString());
+      prefs.setString(
+          'dateOfBirth', dateBirthController.text.trim().toString());
       emptyController();
       showError(false);
       isLoggedIn(true);
@@ -60,6 +70,72 @@ class UserController extends GetxController {
       showError(true);
       isLoggedIn(false);
     }
+  }
+
+  Future<void> SignedIn1() async {
+    if (validateLoginCredentials()) {
+      /* if (validEmail(emailController.text) == null &&
+          validEmail(passwordController.text) == null) { */
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('email', emailController.text.trim().toString());
+      prefs.setString('password', passwordController.text.trim().toString());
+      prefs.setString('name', userNameController.text.trim().toString());
+
+      //emptyController();
+      showError(false);
+      isLoggedIn(true);
+      Get.offAllNamed('/signInProfile');
+      isLoggedIn(false);
+    } /* else {
+        errorMsg = "Incorrect Username or Password!";
+        showError(false);
+        showError(true);
+        isLoggedIn(false);
+      }
+    } */
+    else {
+      errorMsg = "*Fields cannot be empty!";
+      showError(false);
+      showError(true);
+      isLoggedIn(false);
+    }
+  }
+
+  Future<void> SignedIn2() async {
+    if (validateLoginCredentialsProfileSignIn()) {
+      /* if (validEmail(emailController.text) == null &&
+          validEmail(passwordController.text) == null) { */
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      prefs.setString('photo', photoController.text.trim().toString());
+      prefs.setString(
+          'dateOfBirth', dateBirthController.text.trim().toString());
+      emptyController();
+      showError(false);
+      isLoggedIn(true);
+      Get.offAllNamed('/home');
+      isLoggedIn(false);
+    } /* else {
+        errorMsg = "Incorrect Username or Password!";
+        showError(false);
+        showError(true);
+        isLoggedIn(false);
+      }
+    } */
+    else {
+      errorMsg = "*Fields cannot be empty!";
+      showError(false);
+      showError(true);
+      isLoggedIn(false);
+    }
+  }
+
+  void emptyController() {
+    emailController.text = "";
+    passwordController.text = "";
+    dateBirthController.text = "";
+    photoController.text = "";
+    userNameController.text = "";
   }
 
   String? validEmail(String value) {
@@ -85,9 +161,14 @@ class UserController extends GetxController {
     }
   }
 
-  void emptyController() {
-    emailController.text = "";
-    passwordController.text = "";
+  bool validateLoginCredentialsProfileSignIn() {
+    if (emailController.text.trim().isNotEmpty &&
+        userNameController.text.trim().isNotEmpty &&
+        dateBirthController.text.trim().isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   Future<void> emptyPrefs() async {

@@ -29,7 +29,11 @@ class _SeplashScreenLoginState extends State<SeplashScreenLogin> {
         seconds: 3,
       ),
       () {
-        Get.offNamed("/login");
+        if (alreadyUsed == true) {
+          Get.offNamed("/lang");
+        } else {
+          Get.offNamed("/ScreenIntroduction");
+        }
       },
     );
     super.initState();
