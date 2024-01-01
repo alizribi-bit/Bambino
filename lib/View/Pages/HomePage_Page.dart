@@ -3,8 +3,8 @@ import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Appointment_Screen.dart
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Home_Screen.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Location_Screen.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/Profile_Screen.dart';
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:ionicons/ionicons.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //UserController userController = UserController();
   int selectedItem = 0;
   void updateIndex(index) {
     setState(() {
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  List<Widget> _myList = [
+  final List<Widget> _myList = const [
     HomeScreen(),
     LocationScreen(),
     AppointmentScreen(),
@@ -36,46 +35,52 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         body: _myList[selectedItem],
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ConvexAppBar(
-            items: [
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: GNav(
+            rippleColor: ConstantColor().grey1,
+            hoverColor: ConstantColor().grey4,
+            gap: 8,
+            duration: const Duration(milliseconds: 400),
+            activeColor: Colors.black,
+            iconSize: 24,
+            color: Colors.black,
+            //tabBackgroundColor: ConstantColor().grey4,
+            tabs: [
               _tabItem(
-                Icon(
-                  Ionicons.home,
-                  color: ConstantColor().grey4,
-                ),
+                selectedItem == 0 ? Ionicons.home : Ionicons.home_outline,
               ),
               _tabItem(
-                Icon(
-                  Ionicons.location_sharp,
-                  color: ConstantColor().grey4,
-                ),
+                selectedItem == 1
+                    ? Ionicons.location
+                    : Ionicons.location_outline,
               ),
               _tabItem(
-                Icon(
-                  Ionicons.calendar,
-                  color: ConstantColor().grey4,
-                ),
+                selectedItem == 2
+                    ? Ionicons.calendar
+                    : Ionicons.calendar_outline,
               ),
               _tabItem(
-                Icon(
-                  Ionicons.person,
-                  color: ConstantColor().grey4,
-                ),
+                selectedItem == 3 ? Ionicons.person : Ionicons.person_outline,
               )
             ],
-            initialActiveIndex: 0,
-            onTap: updateIndex,
-            elevation: 0,
-            backgroundColor: Colors.white,
+            selectedIndex: selectedItem,
+            onTabChange: (index) {
+              setState(() {
+                selectedItem = index;
+              });
+            },
           ),
         ),
       ),
     );
   }
 
-  TabItem _tabItem(icon) {
-    return TabItem(icon: icon);
+  GButton _tabItem(icon) {
+    return GButton(
+      icon: icon,
+      iconActiveColor: ConstantColor().darkbluedark,
+      iconColor: ConstantColor().grey2,
+    );
   }
 }
 

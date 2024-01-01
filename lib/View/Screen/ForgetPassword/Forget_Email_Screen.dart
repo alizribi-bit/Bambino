@@ -6,6 +6,7 @@ import '../../../Controller/States/User_Controller.dart';
 import '../../../Setting/Colors/colorsSetting.dart';
 
 import '../../Widget/InputFilde_Widget.dart';
+import '../../Widget/TextStyle.dart';
 import 'Forget_CodeVerify_Screen.dart';
 
 class ForgetPassworEmail extends StatefulWidget {
@@ -39,18 +40,14 @@ class _ForgetPassworEmailState extends State<ForgetPassworEmail> {
               Image.asset("assets/logo.png"),
               Text(
                 "motpass".tr,
-                style:
-                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: Style().styleBoldTitle,
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
                 "motPassEmail".tr,
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
-                    color: ConstantColor().grey4),
+                style: Style().styleBoldDiscription,
               ),
               const SizedBox(
                 height: 45,

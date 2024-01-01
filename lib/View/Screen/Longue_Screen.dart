@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/States/AppLang_Controller.dart';
+import '../Widget/TextStyle.dart';
 
 class LongueScreen extends StatefulWidget {
   const LongueScreen({super.key});
@@ -25,19 +26,13 @@ class _LongueScreenState extends State<LongueScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 "Choisir votre langue préférée",
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black),
+                style: Style().styleBoldTitle,
               ),
-              const Text(
+              Text(
                 "اختر لغتك المفضلة",
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black),
+                style: Style().styleBoldTitle,
               ),
               SizedBox(
                 height: Get.height * .04,

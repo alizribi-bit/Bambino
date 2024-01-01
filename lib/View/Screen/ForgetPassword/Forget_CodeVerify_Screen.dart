@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../Setting/Colors/colorsSetting.dart';
+import '../../Widget/TextStyle.dart';
 import 'NewPassword_Screen.dart';
 
 class CodeVerificationPassword extends StatefulWidget {
@@ -50,18 +51,14 @@ class _CodeVerificationPasswordState extends State<CodeVerificationPassword> {
                 ),
                 Text(
                   "NewPassword".tr,
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.bold),
+                  style: Style().styleBoldTitle,
                 ),
                 SizedBox(
                   height: Get.height * .03,
                 ),
                 Text(
                   "NewPasswordDiscription".tr,
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: ConstantColor().grey4),
+                  style: Style().styleBoldDiscription,
                 ),
                 SizedBox(
                   height: Get.height * .05,
@@ -126,16 +123,13 @@ class _CodeVerificationPasswordState extends State<CodeVerificationPassword> {
                   children: [
                     Text(
                       "Resend".tr,
-                      style: const TextStyle(fontSize: 14),
+                      style: Style().styleTextGray,
                     ),
                     TextButton(
                       onPressed: () {},
                       child: Text(
                         "ResendCode".tr,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.blueAccent,
-                        ),
+                        style: Style().styleTextButton,
                       ),
                     ),
                   ],

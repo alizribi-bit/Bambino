@@ -11,6 +11,8 @@ import '../../Controller/States/User_Controller.dart';
 import '../Widget/InputFilde_Widget.dart';
 import 'package:intl/intl.dart';
 
+import '../Widget/TextStyle.dart';
+
 class SignInProfile extends StatefulWidget {
   const SignInProfile({super.key});
 
@@ -51,7 +53,10 @@ class _SignInProfileState extends State<SignInProfile> {
               Ionicons.arrow_back_outline,
             ),
           ),
-          title: Text("FillProfile".tr),
+          title: Text(
+            "FillProfile".tr,
+            style: Style().styleBoldTitle,
+          ),
         ),
         body: Center(
           child: Padding(
@@ -254,15 +259,11 @@ class _SignInProfileState extends State<SignInProfile> {
               children: <Widget>[
                 Text(
                   "Felicitations".tr,
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.bold),
+                  style: Style().styleBoldTitle,
                 ),
                 Text(
                   "FelicitationsDiscription".tr,
-                  style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
-                      color: ConstantColor().grey4),
+                  style: Style().styleBoldDiscription,
                 ),
                 SizedBox(
                   height: Get.height * .05,

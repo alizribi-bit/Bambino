@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import '../../Controller/States/User_Controller.dart';
 import '../../Setting/Colors/colorsSetting.dart';
 import '../Widget/InputFilde_Widget.dart';
+import '../Widget/TextStyle.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -33,18 +34,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     Text(
                       "CreerCompte".tr,
-                      style: const TextStyle(
-                          fontSize: 22, fontWeight: FontWeight.bold),
+                      style: Style().styleBoldTitle,
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
                       "CreerCompteDescription".tr,
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700,
-                          color: ConstantColor().grey4),
+                      style: Style().styleBoldDiscription,
                     ),
                     const SizedBox(
                       height: 45,
@@ -146,7 +143,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Text(
                           "AvezCompte".tr,
-                          style: const TextStyle(fontSize: 14),
+                          style: Style().styleTextGray,
                         ),
                         TextButton(
                           onPressed: () {
@@ -154,10 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           },
                           child: Text(
                             "SignUp".tr,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.blueAccent,
-                            ),
+                            style: Style().styleTextButton,
                           ),
                         ),
                       ],

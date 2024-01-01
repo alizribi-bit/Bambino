@@ -1,3 +1,4 @@
+import 'package:bambino/View/Widget/TextStyle.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -15,8 +16,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
             Text(
-              "Profile Screen",
-              style: TextStyle(fontSize: 30),
+              "+216 99 999 999",
+              style: Style().styleBoldDiscription,
             )
           ],
         ),

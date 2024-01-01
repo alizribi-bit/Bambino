@@ -5,6 +5,7 @@ import 'package:ionicons/ionicons.dart';
 import '../../../Controller/States/User_Controller.dart';
 import '../../../Setting/Colors/colorsSetting.dart';
 import '../../Widget/InputFilde_Widget.dart';
+import '../../Widget/TextStyle.dart';
 
 class NewPassword extends StatefulWidget {
   const NewPassword({super.key});
@@ -39,18 +40,14 @@ class _NewPasswordState extends State<NewPassword> {
               ),
               Text(
                 "NewPassword".tr,
-                style:
-                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: Style().styleBoldTitle,
               ),
               SizedBox(
                 height: Get.height * .03,
               ),
               Text(
                 "NewPasswordDiscription".tr,
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: ConstantColor().grey4),
+                style: Style().styleBoldDiscription,
               ),
               SizedBox(
                 height: Get.height * .05,

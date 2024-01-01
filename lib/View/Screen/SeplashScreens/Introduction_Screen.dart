@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../Setting/Colors/colorsSetting.dart';
+import '../../Widget/TextStyle.dart';
 
 class ScreenIntroduction extends StatefulWidget {
   const ScreenIntroduction({super.key});
@@ -172,7 +173,7 @@ class _ScreenIntroductionState extends State<ScreenIntroduction> {
           child: Text(
             text,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+            style: Style().styleBoldTitle,
           ),
         ),
         Padding(
@@ -180,10 +181,7 @@ class _ScreenIntroductionState extends State<ScreenIntroduction> {
           child: Text(
             discription,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 15,
-                color: ConstantColor().grey4,
-                fontWeight: FontWeight.w600),
+            style: Style().styleBoldDiscription,
           ),
         )
       ],
