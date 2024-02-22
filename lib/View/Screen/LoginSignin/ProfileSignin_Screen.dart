@@ -3,15 +3,16 @@ import 'dart:io';
 import 'package:bambino/Setting/Colors/colorsSetting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Controller/States/User_Controller.dart';
-import '../Widget/InputFilde_Widget.dart';
+import '../../../Controller/States/User_Controller.dart';
+import '../../Widget/InputFilde_Widget.dart';
 import 'package:intl/intl.dart';
 
-import '../Widget/TextStyle.dart';
+import '../../Widget/TextStyle.dart';
 
 class SignInProfile extends StatefulWidget {
   const SignInProfile({super.key});
@@ -36,33 +37,58 @@ class _SignInProfileState extends State<SignInProfile> {
     }
   }
 
-  UserController userController = UserController();
+  UserController _userController = UserController();
+
   final format = DateFormat("yyyy-MM-dd");
   DateTime selectedDate = DateTime.now();
+
+  void _getDate() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _userController.emailController.text = prefs.getString('email')!;
+    _userController.userNameController.text = prefs.getString('lastName')!;
+  }
+
+  @override
+  void initState() {
+    _getDate();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(
-              Ionicons.arrow_back_outline,
+          leading: GetStorage().read('lang') == 'fr'
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Ionicons.arrow_back_outline,
+                  ),
+                )
+              : IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Ionicons.arrow_forward_outline,
+                  ),
+                ),
+          title: Center(
+            child: Text(
+              "FillProfile".tr,
+              style: Style().styleBoldTitle,
             ),
-          ),
-          title: Text(
-            "FillProfile".tr,
-            style: Style().styleBoldTitle,
           ),
         ),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Form(
-              key: userController.formKey,
+              key: _userController.formKey,
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -84,8 +110,8 @@ class _SignInProfileState extends State<SignInProfile> {
                                   size: Get.width * .5,
                                 ),
                           Positioned(
-                            bottom: Get.width * .03,
-                            right: Get.width * .04,
+                            bottom: Get.width * .05,
+                            right: Get.width * .08,
                             child: GestureDetector(
                               onTap: () async {
                                 setState(() {
@@ -93,9 +119,9 @@ class _SignInProfileState extends State<SignInProfile> {
                                 });
                               },
                               child: Icon(
-                                Ionicons.pencil_outline,
-                                color: ConstantColor().blue,
-                                size: Get.width * .09,
+                                Icons.edit_square,
+                                color: Colors.blueAccent.shade100,
+                                size: Get.width * .07,
                               ),
                             ),
                           ),
@@ -107,23 +133,25 @@ class _SignInProfileState extends State<SignInProfile> {
                     ),
                     textFormFieldWidget(
                         context,
-                        userController.userNameController,
+                        _userController.userNameController,
                         TextInputType.text,
                         "NomPrenom".tr,
                         Ionicons.person_circle_outline,
-                        userController.emailU,
-                        userController),
+                        _userController.emailU,
+                        _userController,
+                        _userController.userNameController.text),
                     const SizedBox(
                       height: 30,
                     ),
                     textFormFieldWidget(
                         context,
-                        userController.emailController,
+                        _userController.emailController,
                         TextInputType.emailAddress,
                         "email".tr,
                         Ionicons.mail_outline,
-                        userController.emailU,
-                        userController),
+                        _userController.emailU,
+                        _userController,
+                        _userController.emailController.text),
                     const SizedBox(
                       height: 30,
                     ),
@@ -152,7 +180,7 @@ class _SignInProfileState extends State<SignInProfile> {
                     TextField(
                       readOnly: true,
                       textInputAction: TextInputAction.none,
-                      controller: userController.dateBirthController,
+                      controller: _userController.dateBirthController,
                       decoration: DecorationWidget(
                         context,
                         "DateNaiss".tr,
@@ -172,7 +200,7 @@ class _SignInProfileState extends State<SignInProfile> {
                           if (dateTime != null) {
                             setState(() {
                               selectedDate = dateTime;
-                              userController.dateBirthController.text =
+                              _userController.dateBirthController.text =
                                   DateFormat("yyyy-MM-dd").format(selectedDate);
                             });
                           }
@@ -183,9 +211,9 @@ class _SignInProfileState extends State<SignInProfile> {
                       height: 30,
                     ),
 
-                    Obx(() => userController.showError.value
+                    Obx(() => _userController.showError.value
                         ? Text(
-                            userController.errorMsg,
+                            _userController.errorMsg,
                             style: const TextStyle(
                                 color: Colors.red, fontSize: 12),
                           )
@@ -240,7 +268,7 @@ class _SignInProfileState extends State<SignInProfile> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         Future.delayed(const Duration(seconds: 2), () {
-          userController.SignedIn2();
+          _userController.SignedIn2();
         });
         return AlertDialog(
           title: Center(

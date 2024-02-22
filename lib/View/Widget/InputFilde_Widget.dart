@@ -1,10 +1,11 @@
 import 'package:bambino/Setting/Colors/colorsSetting.dart';
 import 'package:flutter/material.dart';
 
-TextFormField textFormFieldWidget(
-    context, controller, type, labele, icon, controllerValue, userController) {
+TextFormField textFormFieldWidget(context, controller, type, labele, icon,
+    controllerValue, userController, String? initialValue) {
   return TextFormField(
     controller: controller,
+    //initialValue: initialValue == "" ? "" : initialValue,
     // autocorrect: false,
     keyboardType: type,
     onSaved: (value) {

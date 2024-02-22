@@ -23,14 +23,6 @@ class _ForgetPassworEmailState extends State<ForgetPassworEmail> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Ionicons.arrow_back_outline,
-          ),
-        ),
       ),
       body: Center(
         child: Padding(
@@ -59,7 +51,8 @@ class _ForgetPassworEmailState extends State<ForgetPassworEmail> {
                   "email".tr,
                   Ionicons.mail_outline,
                   userController.emailU,
-                  userController),
+                  userController,
+                  ""),
               const SizedBox(
                 height: 30,
               ),

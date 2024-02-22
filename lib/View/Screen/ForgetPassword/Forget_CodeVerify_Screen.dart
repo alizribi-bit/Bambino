@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
 
 import '../../../Setting/Colors/colorsSetting.dart';
 import '../../Widget/TextStyle.dart';
@@ -28,14 +27,6 @@ class _CodeVerificationPasswordState extends State<CodeVerificationPassword> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Ionicons.arrow_back_outline,
-          ),
-        ),
       ),
       body: Form(
         child: Center(

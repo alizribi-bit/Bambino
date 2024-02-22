@@ -8,10 +8,28 @@ class Style {
     color: ConstantColor().darkbluedark,
   );
 
+  TextStyle styleBold1 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: ConstantColor().darkbluedark,
+  );
+
+  TextStyle styleW4001 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: ConstantColor().listTile,
+  );
+
   TextStyle styleBoldDiscription = TextStyle(
     fontSize: 17,
     fontWeight: FontWeight.w700,
     color: ConstantColor().grey4,
+  );
+
+  TextStyle styleListTile = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: ConstantColor().listTile,
   );
 
   TextStyle styleTextButton = const TextStyle(

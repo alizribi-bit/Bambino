@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:bambino/Model/user_model.dart';
-import 'package:bambino/View/Screen/ScreensOfTheHomePAge/ProfileScreens/Favorites_Screen.dart';
 import 'package:bambino/View/Screen/ScreensOfTheHomePAge/ProfileScreens/Setting_Screen.dart';
 import 'package:bambino/View/Widget/TextStyle.dart';
 import 'package:flutter/material.dart';
@@ -92,29 +91,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Stack(
                           children: [
                             _image != null
-                                ? ClipOval(
-                                    // radius: Get.wdth * .27,i
-                                    child: Container(
-                                      width: Get.width * 0.5,
-                                      height: Get.width * 0.5,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: FileImage(
-                                            _image!,
-                                          ),
-                                        ),
-                                      ),
+                                ? CircleAvatar(
+                                    radius: Get.width * .25,
+                                    backgroundImage: FileImage(
+                                      _image!,
                                     ),
                                   )
                                 : Icon(
                                     Ionicons.person_circle_outline,
-                                    color: Colors.grey.shade300,
-                                    size: Get.width * .33,
+                                    color: Colors.grey.shade400,
+                                    size: Get.width * .5,
                                   ),
                             Positioned(
-                              bottom: 0,
-                              right: 0,
+                              bottom: Get.width * .03,
+                              right: Get.width * .04,
                               child: GestureDetector(
                                 onTap: () async {
                                   setState(() {
@@ -123,8 +113,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 },
                                 child: Icon(
                                   Icons.edit_square,
-                                  color: Colors.blueAccent.shade100,
-                                  size: Get.width * .08,
+                                  color: ConstantColor().blue,
+                                  size: Get.width * .09,
                                 ),
                               ),
                             ),
@@ -133,7 +123,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(
                           height: Get.height * .01,
                         ),
-                        Text(snapshot.data!.lastName!),
+                        Text(snapshot.data!.firstName!),
                         SizedBox(
                           height: Get.height * .01,
                         ),
@@ -157,10 +147,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child:
-                    listTileWidget(Ionicons.heart_outline, "Favorite".tr, () {
-                  function(FavoriteScreen());
-                }),
+                child: listTileWidget(
+                    Ionicons.heart_outline, "Favorite".tr, () {}),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),

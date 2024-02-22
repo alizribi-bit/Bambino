@@ -28,4 +28,8 @@ class AppLang extends GetxController {
     }
     update();
   }
+
+  String getLang() {
+    return appLocalLang;
+  }
 }

@@ -22,12 +22,6 @@ class _NewPasswordState extends State<NewPassword> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Ionicons.arrow_back_outline),
-        ),
       ),
       body: Center(
         child: Padding(
@@ -59,7 +53,8 @@ class _NewPasswordState extends State<NewPassword> {
                   "password".tr,
                   Ionicons.lock_closed_outline,
                   userController.password,
-                  userController),
+                  userController,
+                  ""),
               SizedBox(
                 height: Get.height * .03,
               ),
@@ -70,7 +65,8 @@ class _NewPasswordState extends State<NewPassword> {
                   "ConfirmPas".tr,
                   Ionicons.lock_closed_outline,
                   userController.password,
-                  userController),
+                  userController,
+                  ""),
               SizedBox(
                 height: Get.height * .05,
               ),

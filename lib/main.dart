@@ -1,18 +1,18 @@
 import 'package:bambino/Setting/lang/translationSetting.dart';
 import 'package:bambino/View/Pages/HomePage_Page.dart';
-import 'package:bambino/View/Screen/Login_Screen.dart';
+import 'package:bambino/View/Screen/LoginSignin/Login_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'View/Pages/Luncher_Page.dart';
+import 'View/Screen/LoginSignin/ProfileSignin_Screen.dart';
 import 'View/Screen/Longue_Screen.dart';
-import 'View/Screen/ProfileSignin_Screen.dart';
 import 'View/Screen/SeplashScreens/Home_Seplash_Screen.dart';
 import 'View/Screen/SeplashScreens/Introduction_Screen.dart';
 import 'View/Screen/SeplashScreens/Login_Seplash_Screen.dart';
-import 'View/Screen/Signin_Screen.dart';
+import 'View/Screen/LoginSignin/Signin_Screen.dart';
 
 Future<void> main() async {
   await GetStorage.init();

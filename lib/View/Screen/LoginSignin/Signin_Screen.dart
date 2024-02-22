@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../../Controller/States/User_Controller.dart';
-import '../../Setting/Colors/colorsSetting.dart';
-import '../Widget/InputFilde_Widget.dart';
-import '../Widget/TextStyle.dart';
+import '../../../Controller/States/User_Controller.dart';
+import '../../../Setting/Colors/colorsSetting.dart';
+import '../../Widget/InputFilde_Widget.dart';
+import '../../Widget/TextStyle.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -53,7 +53,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "NomPrenom".tr,
                         Ionicons.person_circle_outline,
                         userController.emailU,
-                        userController),
+                        userController,
+                        ""),
                     const SizedBox(
                       height: 30,
                     ),
@@ -64,7 +65,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "email".tr,
                         Ionicons.mail_open_outline,
                         userController.emailU,
-                        userController),
+                        userController,
+                        ""),
                     const SizedBox(
                       height: 30,
                     ),
@@ -75,7 +77,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "password".tr,
                         Ionicons.lock_closed_outline,
                         userController.password,
-                        userController),
+                        userController,
+                        ""),
                     const SizedBox(
                       height: 30,
                     ),

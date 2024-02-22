@@ -18,15 +18,15 @@ class UserController extends GetxController {
   var name = "";
   var password = "";
   String errorMsg = "";
-  User user = new User();
+  User user = User();
 
   @override
   void onInit() async {
     super.onInit();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.containsKey('email')) {
-      if (prefs.getString('email') == user.email &&
-          prefs.getString('password') == user.password) {
+      if (prefs.getString('email') == emailU &&
+          prefs.getString('password') == password) {
         isLoggedIn(true);
       } else {
         isLoggedIn(false);
@@ -37,7 +37,7 @@ class UserController extends GetxController {
   Future<String?> getemeil() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return await prefs.getString('email');
+    return prefs.getString('email');
   }
 
   //Do login method to submit data
@@ -48,7 +48,8 @@ class UserController extends GetxController {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('email', emailController.text.trim().toString());
       prefs.setString('password', passwordController.text.trim().toString());
-      prefs.setString('name', userNameController.text.trim().toString());
+      prefs.setString('lastName', userNameController.text.trim().toString());
+      prefs.setString('firstName', userNameController.text.trim().toString());
       prefs.setString('photo', photoController.text.trim().toString());
       prefs.setString(
           'dateOfBirth', dateBirthController.text.trim().toString());
@@ -72,20 +73,23 @@ class UserController extends GetxController {
     }
   }
 
+  // ignore: non_constant_identifier_names
   Future<void> SignedIn1() async {
+    print("**************** 111");
     if (validateLoginCredentials()) {
       /* if (validEmail(emailController.text) == null &&
           validEmail(passwordController.text) == null) { */
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('email', emailController.text.trim().toString());
       prefs.setString('password', passwordController.text.trim().toString());
-      prefs.setString('name', userNameController.text.trim().toString());
-
+      prefs.setString('lastName', userNameController.text.trim().toString());
+      print("**************** 22222");
       //emptyController();
       showError(false);
       isLoggedIn(true);
       Get.offAllNamed('/signInProfile');
       isLoggedIn(false);
+      print("**************** 3333");
     } /* else {
         errorMsg = "Incorrect Username or Password!";
         showError(false);
@@ -98,6 +102,7 @@ class UserController extends GetxController {
       showError(false);
       showError(true);
       isLoggedIn(false);
+      print("**************** 5555");
     }
   }
 
@@ -175,8 +180,14 @@ class UserController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('username');
     prefs.remove('password');
+    prefs.remove('dateOfBirth');
+    prefs.remove('photo');
+    prefs.remove('email');
+    prefs.remove('password');
+    Get.offAllNamed('/login');
   }
 }
+
 
 
 
